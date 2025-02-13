@@ -1,6 +1,8 @@
+import java.sql.*;
+
 public class DemoJdbc {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
 
         /*
         import package
@@ -11,6 +13,12 @@ public class DemoJdbc {
         process results
         close
          */
+
+        //load and register
+        Class.forName("org.postgresql.Driver");
+
+        //create connection
+
 
 
 
