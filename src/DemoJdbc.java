@@ -17,7 +17,7 @@ public class DemoJdbc {
         String url = "jdbc:postgresql://localhost:5432/demo";
         String uname = "postgres";
         String pass = "Ladysmithroad123";
-        String sql ="select * from student";
+        String sql ="insert into student values (5, 'John', 48)";
 
         //load and register
         Class.forName("org.postgresql.Driver");
@@ -30,25 +30,14 @@ public class DemoJdbc {
         //create statement
         Statement st = con.createStatement();
 
-        /* Statement object allows you to send sql queries to database, st.executeQuery(sql) executes the query contained in the sql string.
-        Result of this query is a set of data(ResultSet) that is returned and stored in the rs variable. */
-        ResultSet rs = st.executeQuery(sql);
+        boolean status = st.execute(sql);
+        System.out.println(status);
 
-        //process results - will tell you if there is another row in the database(will print true)
-        //System.out.println(rs.next());
 
-         //close a connection
+        //close a connection
         con.close();
         System.out.println("Connection closed");
 
-        //get name of column
-        //String name = rs.getString("sname");
-       // System.out.println("Name of student is " + name);
-
-        while(rs.next()) {
-            System.out.print(rs.getInt(1) + " - ");
-            System.out.print(rs.getString(2) + " - ");
-            System.out.println(rs.getInt(3));
 
 
         }
@@ -56,4 +45,4 @@ public class DemoJdbc {
 
 
     }
-}
+
