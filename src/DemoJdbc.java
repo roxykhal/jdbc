@@ -14,10 +14,14 @@ public class DemoJdbc {
         close
          */
 
+        int sid = 102;
+        String sname = "Jasmine";
+        int marks = 22;
+
         String url = "jdbc:postgresql://localhost:5432/demo";
         String uname = "postgres";
         String pass = "Ladysmithroad123";
-        String sql ="delete from student where sid=5";
+        String sql ="insert into student values (?,?,?)";
 
         //load and register
         Class.forName("org.postgresql.Driver");
@@ -25,14 +29,13 @@ public class DemoJdbc {
        /* Statement object allows you to send sql queries to database, st.executeQuery(sql) executes the query contained in the sql string.
         Result of this query is a set of data(resultset) that is returned and stored in the rs variable. */
         Connection con = DriverManager.getConnection(url,uname,pass);
-        System.out.println("Connection established");
 
-        //create statement
-        Statement st = con.createStatement();
+        PreparedStatement st = con.prepareStatement(sql);
+        st.setInt(1, sid);
+        st.setString(2, sname);
+        st.setInt(3, marks);
 
-        boolean status = st.execute(sql);
-        System.out.println(status);
-
+        st.execute();
 
         //close a connection
         con.close();
