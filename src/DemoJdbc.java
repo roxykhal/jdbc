@@ -27,6 +27,7 @@ public class DemoJdbc {
 
        /* Statement object allows you to send sql queries to database, st.executeQuery(sql) executes the query contained in the sql string. Result of this query is a set of data(resultset) that is returned and stored in the rs variable. */
         Connection con = DriverManager.getConnection(url,uname,pass);
+        System.out.println("Connection established");
 
         //create statement
         Statement st = con.createStatement();
@@ -37,9 +38,10 @@ public class DemoJdbc {
         //process results - will tell you if there is another row in the database(will print true)
         System.out.println(rs.next());
 
-        System.out.println("Connection established");
+         //close a connection
+        con.close();
+        System.out.println("Connection closed");
 
-        //create statement
 
 
 
