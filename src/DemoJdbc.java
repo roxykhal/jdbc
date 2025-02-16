@@ -17,7 +17,7 @@ public class DemoJdbc {
         String url = "jdbc:postgresql://localhost:5432/demo";
         String uname = "postgres";
         String pass = "Ladysmithroad123";
-        String sql ="insert into student values (5, 'John', 48)";
+        String sql ="update student set sname= 'Max' where sid = 5";
 
         //load and register
         Class.forName("org.postgresql.Driver");
